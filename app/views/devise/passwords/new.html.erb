@@ -1,0 +1,18 @@
+<div class="container">
+<h2>Esqueceu sua senha?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <br />
+    <%= f.email_field :email,class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Mandar instruções por email" %>
+  </div>
+<% end %>
+<br>
+<%= render "devise/shared/links" %>
+</div>

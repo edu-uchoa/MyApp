@@ -1,0 +1,46 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+<div class="container text-center">
+  <div class="row row-cols-auto">
+    <div class="col"><%= link_to "Editar", edit_post_path(@post), class:"btn btn-secondary" %></div> |
+    <div class="col"><%= link_to "Voltar", posts_path, class:"btn btn-secondary" %></div> |
+    <div class="col"><%= button_to "Destruir Post", @post, method: :delete, class:"btn btn-danger" %></div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="container text-center">
+<h2>Comentários</h2>
+
+<%= form_with(model: [@post, @comment], class: "mb-3") do |form| %>
+  <div class="form-group">
+    <%= form.text_area :content, rows: 3, class: "form-control", placeholder: "Digite seu comentário..." %>
+  </div>
+  <div class="mt-2">
+    <%= form.submit "Adicionar comentário", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <div class="comment card bg-light border-0 mb-3">
+    <div class="card-body text-end"> <!-- Texto alinhado à direita -->
+      <p>
+        <strong><%= comment.user.name %>:</strong> 
+        <%= comment.content %>
+      </p>
+      <p class="text-muted small">Comentado em <%= comment.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+

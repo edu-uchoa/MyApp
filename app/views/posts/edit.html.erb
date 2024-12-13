@@ -1,0 +1,17 @@
+<div class="container">
+<% content_for :title, "Editing post" %>
+
+<h1>Editar post</h1>
+
+<div class="container" style="border: 2px solid blue; padding: 10px; margin: 10px;">
+<%= render "form", post: @post %>
+
+<br>
+</div>
+<div class="container">
+  <div class="row row-cols-auto">
+    <div class="col"><%= link_to "Mostrar Post", @post, class:"btn btn-secondary" %></div> |
+    <div class="col"><%= link_to "Voltar", posts_path, class:"btn btn-secondary" %></div>
+  </div>
+</div>
+</div>

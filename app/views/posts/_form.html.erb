@@ -1,0 +1,29 @@
+<%= form_with(model: @post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.text_field :title, class: "form-control", placeholder:"Título" %>
+  </div>
+  <br>
+  <div class="field form-group">
+    <%= form.text_area :content, class: "form-control", placeholder:"Seu texto aqui..." %>
+  </div>
+  <br>
+  <div class="field form-group">
+    <%= form.number_field :user_id, id: :post_user_id,class: "form-control", value:current_user.id, type: :hidden%>
+  </div>
+  <br>
+  <div>
+    <%= form.submit "Enviar Post", class: "btn btn-primary", data: { toggle: "tooltip", placement: "top", title: "Clique para enviar" } %>
+  </div>
+<% end %>
